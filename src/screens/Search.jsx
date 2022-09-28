@@ -1,11 +1,22 @@
-import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, ScrollView, FlatList } from "react-native";
 import { SearchBar } from "@rneui/themed";
+import { getMovies, searchMovie } from "../services/movie";
+import Card from "../components/Card";
 export default function Search({ navigation }) {
+  const [movies, setMovies] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [value, setValue] = useState("");
-  const updateSearch = (search) => {
-    setSearch(search);
-  };
+  const renderItem = ({ item }) => (
+    <View style={{ flex: 1, paddingHorizontal: 20, marginBottom: 10 }}>
+      <Card data={item} />
+    </View>
+  );
+
+  useEffect(() => {
+    searchMovie(value, setSearchResults);
+  }, [value]);
+
   return (
     <View>
       <SearchBar
@@ -18,6 +29,18 @@ export default function Search({ navigation }) {
         cancelButtonProps={{}}
         value={value}
       />
+      <View style={{ paddingHorizontal: 5, marginBottom: 120 }}>
+        {value.length === 0 ? (
+          <></>
+        ) : (
+          <FlatList
+            data={searchResults}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+            numColumns={2}
+          />
+        )}
+      </View>
     </View>
   );
 }

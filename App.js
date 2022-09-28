@@ -9,7 +9,7 @@ import InfoMovie from "./src/screens/InfoMovie";
 export default function App() {
   return (
     <SafeAreaProvider>
-      <InfoMovie />
+      <MainContent />
     </SafeAreaProvider>
   );
 }
