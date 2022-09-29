@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  Text,
+  ScrollView,
+  Image,
+  FlatList,
+} from "react-native";
+import Swiper from "react-native-swiper/src";
+import { getMovies } from "../services/movie";
+import Card from "../components/Card";
+export default function Home() {
+  const [movies, setMovie] = useState([]);
+  const renderItem = ({ item }) => (
+    <View style={{ flex: 1, paddingHorizontal: 20, marginBottom: 10 }}>
+      <Card data={item} />
+    </View>
+  );
+  useEffect(() => {
+    getMovies(setMovie);
+  }, []);
+  return (
+    <View>
+      <ScrollView>
+=======
 import React from "react";
 import { StyleSheet, View, SafeAreaView, Text, ScrollView } from "react-native";
 import Swiper from "react-native-swiper/src";
@@ -6,6 +34,7 @@ export default function Home() {
   return (
     <ScrollView style={{ flex: 1 }}>
       <SafeAreaView>
+>>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
         <View>
           <Swiper style={styles.wrapper} showsButtons={true} autoplay loop>
             <View style={styles.slide1}>
@@ -23,6 +52,20 @@ export default function Home() {
           <View>
             <Text style={styles.title}>Phim Moi</Text>
           </View>
+<<<<<<< HEAD
+          <View style={styles.slideMovie}>
+            <FlatList
+              data={movies}
+              renderItem={renderItem}
+              keyExtractor={(item, index) => index.toString()}
+              numColumns={2}
+              nestedScrollEnabled
+            />
+          </View>
+        </View>
+      </ScrollView>
+    </View>
+=======
 
           <View style={styles.slideMovie}>
             <Image
@@ -214,12 +257,17 @@ export default function Home() {
         </View>
       </SafeAreaView>
     </ScrollView>
+>>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
   );
 }
 
 const styles = StyleSheet.create({
   wrapper: {
+<<<<<<< HEAD
+    height: 250,
+=======
     height: 300,
+>>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
   },
   slide1: {
     flex: 1,
@@ -249,11 +297,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
+<<<<<<< HEAD
+
+=======
   slideMovie: {
     display: "flex",
     flexDirection: "row",
     overflowX: "scroll",
   },
+>>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
   poster: {
     height: 110,
     width: 80,
