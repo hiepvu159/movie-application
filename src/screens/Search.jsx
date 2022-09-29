@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView, FlatList } from "react-native";
 import { SearchBar } from "@rneui/themed";
@@ -17,6 +18,16 @@ export default function Search({ navigation }) {
     searchMovie(value, setSearchResults);
   }, [value]);
 
+=======
+import React, { useState } from "react";
+import { View, StyleSheet } from "react-native";
+import { SearchBar } from "@rneui/themed";
+export default function Search({ navigation }) {
+  const [value, setValue] = useState("");
+  const updateSearch = (search) => {
+    setSearch(search);
+  };
+>>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
   return (
     <View>
       <SearchBar
@@ -29,6 +40,7 @@ export default function Search({ navigation }) {
         cancelButtonProps={{}}
         value={value}
       />
+<<<<<<< HEAD
       <View style={{ paddingHorizontal: 5, marginBottom: 120 }}>
         {value.length === 0 ? (
           <></>
@@ -41,6 +53,8 @@ export default function Search({ navigation }) {
           />
         )}
       </View>
+=======
+>>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
     </View>
   );
 }

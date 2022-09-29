@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -49,6 +50,24 @@ export default function Filter() {
           numColumns={2}
         />
       </View>
+=======
+import React, { useState } from "react";
+import { View, TextInput, StyleSheet } from "react-native";
+import SelectList from "react-native-dropdown-select-list";
+
+export default function Filter({ navigation }) {
+  const [selected, setSelected] = useState("");
+
+  const data = [{ key: "1", value: "Jammu & Kashmir" }];
+  return (
+    <View>
+      <SelectList
+        style={styles.filter}
+        setSelected={setSelected}
+        data={data}
+        onSelect={() => console.log(selected)}
+      />
+>>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
     </View>
   );
 }
@@ -59,6 +78,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     padding: 10,
+<<<<<<< HEAD
     zIndex: 3,
+=======
+>>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
   },
 });
