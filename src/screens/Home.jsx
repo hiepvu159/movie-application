@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
@@ -25,16 +24,6 @@ export default function Home() {
   return (
     <View>
       <ScrollView>
-=======
-import React from "react";
-import { StyleSheet, View, SafeAreaView, Text, ScrollView } from "react-native";
-import Swiper from "react-native-swiper/src";
-import { Image } from "@rneui/themed";
-export default function Home() {
-  return (
-    <ScrollView style={{ flex: 1 }}>
-      <SafeAreaView>
->>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
         <View>
           <Swiper style={styles.wrapper} showsButtons={true} autoplay loop>
             <View style={styles.slide1}>
@@ -52,7 +41,6 @@ export default function Home() {
           <View>
             <Text style={styles.title}>Phim Moi</Text>
           </View>
-<<<<<<< HEAD
           <View style={styles.slideMovie}>
             <FlatList
               data={movies}
@@ -65,209 +53,12 @@ export default function Home() {
         </View>
       </ScrollView>
     </View>
-=======
-
-          <View style={styles.slideMovie}>
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-          </View>
-        </View>
-        <View>
-          <Text style={styles.title}>Phim Moi</Text>
-
-          <View style={styles.slideMovie}>
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-          </View>
-        </View>
-        <View>
-          <Text style={styles.title}>Phim Moi</Text>
-
-          <View style={styles.slideMovie}>
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-          </View>
-        </View>
-        <View>
-          <Text style={styles.title}>Phim Moi</Text>
-          <View style={styles.slideMovie}>
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-            <Image
-              style={styles.poster}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-              }}
-            />
-          </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
->>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
   );
 }
 
 const styles = StyleSheet.create({
   wrapper: {
-<<<<<<< HEAD
     height: 250,
-=======
-    height: 300,
->>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
   },
   slide1: {
     flex: 1,
@@ -297,15 +88,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
-<<<<<<< HEAD
-
-=======
-  slideMovie: {
-    display: "flex",
-    flexDirection: "row",
-    overflowX: "scroll",
-  },
->>>>>>> ab02e70bd7ad021c669f57e0f05c92caf8474b41
   poster: {
     height: 110,
     width: 80,
