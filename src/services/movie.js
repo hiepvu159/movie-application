@@ -17,6 +17,32 @@ export const getMovieById = async (id, setMovie) => {
     .catch((err) => console.log(err));
 };
 
+export const getNewMovie = async (setMovies) => {
+  await axios
+    .get(`${url}/movies/new`)
+    .then((res) => {
+      setMovies(res.data);
+    })
+    .catch((err) => console.log(err));
+};
+
+export const getMoviesSeries = async (setMovies) => {
+  await axios
+    .get(`${url}/movies/series`)
+    .then((res) => {
+      setMovies(res.data);
+    })
+    .catch((err) => console.log(err));
+};
+export const getMoviesSingle = async (setMovies) => {
+  await axios
+    .get(`${url}/movies/single`)
+    .then((res) => {
+      setMovies(res.data);
+    })
+    .catch((err) => console.log(err));
+};
+
 export const searchMovie = async (params, setMovie) => {
   await axios
     .get(`${url}/movies/search/name=${params}`)

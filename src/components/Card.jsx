@@ -15,11 +15,11 @@ export default function Card(props) {
 
 const styles = StyleSheet.create({
   poster: {
-    width: 160,
-    height: 220,
+    width: 120,
+    height: 170,
     objectFit: "cover",
   },
   name: {
-    width: 160,
+    width: 120,
   },
 });

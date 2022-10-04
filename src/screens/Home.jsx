@@ -9,46 +9,104 @@ import {
   FlatList,
 } from "react-native";
 import Swiper from "react-native-swiper/src";
-import { getMovies } from "../services/movie";
+import {
+  getMovies,
+  getMoviesSeries,
+  getMoviesSingle,
+  getNewMovie,
+} from "../services/movie";
 import Card from "../components/Card";
+
 export default function Home() {
-  const [movies, setMovie] = useState([]);
-  const renderItem = ({ item }) => (
-    <View style={{ flex: 1, paddingHorizontal: 20, marginBottom: 10 }}>
-      <Card data={item} />
-    </View>
-  );
+  // const [movies, setMovie] = useState([]);
+  const [movieSingle, setMovieSingle] = useState([]);
+  const [movieSeries, setMovieSeries] = useState([]);
+  const [newMovie, setNewMovie] = useState([]);
+
   useEffect(() => {
-    getMovies(setMovie);
+    // getMovies(setMovie);
+    getMoviesSeries(setMovieSeries);
+    getMoviesSingle(setMovieSingle);
+    getNewMovie(setNewMovie);
   }, []);
   return (
     <View>
       <ScrollView>
         <View>
-          <Swiper style={styles.wrapper} showsButtons={true} autoplay loop>
-            <View style={styles.slide1}>
-              <Text style={styles.text}>Hello Swiper</Text>
-            </View>
-            <View style={styles.slide2}>
-              <Text style={styles.text}>Beautiful</Text>
-            </View>
-            <View style={styles.slide3}>
-              <Text style={styles.text}>And simple</Text>
-            </View>
+          <Swiper
+            style={styles.wrapper}
+            autoplay
+            loop
+            loadMinimal
+            loadMinimalSize={1}
+          >
+            {newMovie?.map((movie) => (
+              <View key={movie._id}>
+                <Image
+                  source={{ uri: movie.thumb_url }}
+                  style={styles.slide1}
+                />
+              </View>
+            ))}
           </Swiper>
         </View>
         <View>
-          <View>
-            <Text style={styles.title}>Phim Moi</Text>
-          </View>
-          <View style={styles.slideMovie}>
-            <FlatList
-              data={movies}
-              renderItem={renderItem}
-              keyExtractor={(item, index) => index.toString()}
-              numColumns={2}
-              nestedScrollEnabled
-            />
+          <View style={{ paddingHorizontal: 5 }}>
+            <View>
+              <Text style={styles.title}>Phim Mới</Text>
+            </View>
+            <View>
+              <ScrollView horizontal>
+                <View style={styles.slideMovie}>
+                  {newMovie?.map((movie) => (
+                    <View
+                      style={{ marginBottom: 10, marginRight: 20 }}
+                      key={movie._id}
+                    >
+                      <Card data={movie} />
+                    </View>
+                  ))}
+                </View>
+              </ScrollView>
+            </View>
+            <View style={{ paddingHorizontal: 5 }}>
+              <View>
+                <Text style={styles.title}>Phim Lẻ</Text>
+              </View>
+              <View>
+                <ScrollView horizontal>
+                  <View style={styles.slideMovie}>
+                    {movieSingle?.map((movie) => (
+                      <View
+                        style={{ marginBottom: 10, marginRight: 20 }}
+                        key={movie._id}
+                      >
+                        <Card data={movie} />
+                      </View>
+                    ))}
+                  </View>
+                </ScrollView>
+              </View>
+            </View>
+            <View style={{ paddingHorizontal: 5 }}>
+              <View>
+                <Text style={styles.title}>Phim Bộ</Text>
+              </View>
+              <View>
+                <ScrollView horizontal>
+                  <View style={styles.slideMovie}>
+                    {movieSeries?.map((movie) => (
+                      <View
+                        style={{ marginBottom: 10, marginRight: 20 }}
+                        key={movie._id}
+                      >
+                        <Card data={movie} />
+                      </View>
+                    ))}
+                  </View>
+                </ScrollView>
+              </View>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -59,24 +117,13 @@ export default function Home() {
 const styles = StyleSheet.create({
   wrapper: {
     height: 250,
+    backgroundColor: "#333",
+    marginBottom: 20,
   },
   slide1: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#9DD6EB",
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#97CAE5",
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#92BBD9",
+    width: "auto",
+    height: 250,
+    objectFit: "cover",
   },
   text: {
     color: "#fff",
@@ -87,6 +134,7 @@ const styles = StyleSheet.create({
     color: "#000",
     fontSize: 20,
     fontWeight: "bold",
+    marginBottom: 10,
   },
   poster: {
     height: 110,
@@ -95,5 +143,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     marginHorizontal: 5,
+  },
+  slideMovie: {
+    display: "flex",
+    flexDirection: "row",
+    overflowX: "scroll",
   },
 });
