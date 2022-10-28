@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, Modal } from "react-native";
 import { Button } from "@rneui/themed";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { loginUser } from "../services/auth";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import RNDateTimePicker from "@react-native-community/datetimepicker";
+import moment from "moment/moment";
 
-export default function Login() {
+export default function SignUp() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [userName, setUserName] = useState("");
   const [passWord, setPassWord] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-
+  const [date, setDate] = useState("");
   const handleLogin = async () => {
     // navigation.navigate("Profile");
     const userLogin = {
@@ -20,7 +23,6 @@ export default function Login() {
     };
     await loginUser(userLogin, dispatch, navigation, setErrorMessage);
   };
-
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text style={{ fontSize: 26, marginBottom: 20 }}>Đăng nhập</Text>
@@ -28,6 +30,33 @@ export default function Login() {
         style={styles.textInput}
         placeholder="Tên đăng nhập"
         onChangeText={(text) => setUserName(text)}
+      />
+      <TextInput
+        style={styles.textInput}
+        placeholder="Tên đăng nhập"
+        onChangeText={(text) => setUserName(text)}
+      />
+      <TextInput
+        style={styles.textInput}
+        placeholder="Tên đăng nhập"
+        onChangeText={(text) => setUserName(text)}
+      />
+      <TextInput
+        style={styles.textInput}
+        placeholder="Tên đăng nhập"
+        onChangeText={(text) => setUserName(text)}
+        value={date}
+      />
+      <Modal></Modal>
+      <RNDateTimePicker
+        mode="date"
+        display="default"
+        value={new Date(date)}
+        minimumDate={new Date(moment().subtract(100, "y").format("YYYY-MM-DD"))}
+        maximumDate={new Date(moment().format("YYYY-MM-DD"))}
+        locale="en-ES"
+        onChange={(e, selectedDate) => setDate(selectedDate)}
+        dateFormat="dayofweek day month"
       />
       <TextInput
         style={styles.textInput}
@@ -55,6 +84,9 @@ export default function Login() {
           onPress={handleLogin}
         >
           Đăng nhập
+        </Button>
+        <Button size="md" title="Submit" buttonStyle={styles.sumbitLogin}>
+          Đăng ký
         </Button>
       </View>
     </View>

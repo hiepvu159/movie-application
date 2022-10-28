@@ -8,7 +8,7 @@ export default function Search({ navigation }) {
   const [searchResults, setSearchResults] = useState([]);
   const [value, setValue] = useState("");
   const renderItem = ({ item }) => (
-    <View style={{ flex: 1, paddingHorizontal: 20, marginBottom: 10 }}>
+    <View style={{ flex: 1, marginHorizontal: 40, marginVertical: 10 }}>
       <Card data={item} />
     </View>
   );
@@ -23,7 +23,7 @@ export default function Search({ navigation }) {
         platform="android"
         onChangeText={(newVal) => setValue(newVal)}
         onClearText={() => console.log(onClearText())}
-        placeholder="Type query here..."
+        placeholder="Nhập tên cần tìm kiếm"
         placeholderTextColor="#888"
         cancelButtonTitle="Cancel"
         cancelButtonProps={{}}

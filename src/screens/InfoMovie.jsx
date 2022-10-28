@@ -1,132 +1,56 @@
 import * as React from "react";
-import { View, StyleSheet, Button, Image } from "react-native";
-import { Video, AVPlaybackStatus } from "expo-av";
+import { View, StyleSheet, Image } from "react-native";
+import { Button } from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import { Text } from "@rneui/themed";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-export default function App() {
-  const video = React.useRef(null);
+export default function InfoMovie() {
   const [status, setStatus] = React.useState({});
+  const navigation = useNavigation();
+  const {
+    params: { data },
+  } = useRoute();
   return (
     <View>
-      <StatusBar hidden />
-      <View style={{ marginHorizontal: 10, marginVertical: 5 }}>
-        <Text h3 h3Style={{ fontSize: 30 }}>
-          Thor: Tình yêu và sấm sét
-        </Text>
-        <Text h4 h4Style={{ fontSize: 16 }}>
-          Thor: Love and Thunder
-        </Text>
-        <Text h4 h4Style={{ fontSize: 16 }}>
-          2022
-        </Text>
-      </View>
+      {/* <StatusBar hidden /> */}
       <Image
         source={{
-          uri: "https://tiepthigiadinh.vn/wp-content/uploads/2015/08/20150825-phim-rap-49-ngay-thumbnail.jpg",
+          uri: `${data?.thumb_url}`,
         }}
         style={styles.thumbnail}
       />
       <View style={{ marginHorizontal: 10, marginVertical: 5 }}>
-        <View style={styles.container}>
-          <Image
-            style={styles.poster}
-            source={{
-              uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDU3HLM6oq00XZWhfUSP22hpIyS5pLxugG6kOjjRet&s",
-            }}
-          />
-          <View style={{ marginLeft: 5 }}>
-            <View
-              style={{
-                maxWidth: 320,
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                wordWrap: "break-word",
-              }}
-            >
-              <Text
-                h4
-                h4Style={{
-                  borderWidth: 2,
-                  fontSize: 14,
-                  borderRadius: 5,
-                  marginRight: 2,
-                  paddingHorizontal: 5,
-                  textAlign: "center",
-                }}
-              >
-                Hanh Dong
-              </Text>
-              <Text
-                h4
-                h4Style={{
-                  borderWidth: 2,
-                  fontSize: 14,
-                  borderRadius: 5,
-                  marginRight: 2,
-                  paddingHorizontal: 5,
-                  textAlign: "center",
-                }}
-              >
-                Hanh Dong
-              </Text>
-              <Text
-                h4
-                h4Style={{
-                  borderWidth: 2,
-                  fontSize: 14,
-                  borderRadius: 5,
-                  marginRight: 2,
-                  paddingHorizontal: 5,
-                  textAlign: "center",
-                }}
-              >
-                Hanh Dong
-              </Text>
-              <Text
-                h4
-                h4Style={{
-                  borderWidth: 2,
-                  fontSize: 14,
-                  borderRadius: 5,
-                  marginRight: 2,
-                  paddingHorizontal: 5,
-                  textAlign: "center",
-                }}
-              >
-                Hanh Dong
-              </Text>
-              <Text
-                h4
-                h4Style={{
-                  borderWidth: 2,
-                  fontSize: 14,
-                  borderRadius: 5,
-                  marginRight: 2,
-                  paddingHorizontal: 5,
-                  textAlign: "center",
-                }}
-              >
-                Hanh Dong
-              </Text>
-            </View>
-            <Text h4 h4Style={{ fontSize: 16 }}>
-              Danh muc: Feng宝
-            </Text>
-          </View>
+        <Text h3 h3Style={{ fontSize: 30 }}>
+          {data?.name}
+        </Text>
+        <Text h4 h4Style={{ fontSize: 16 }}>
+          {data?.origin_name} {""} ({data?.year})
+        </Text>
+        <Text h4 h4Style={{ fontSize: 16 }}>
+          Thể loại: {data?.category}
+        </Text>
+        <Text h4 h4Style={{ fontSize: 16 }}>
+          Danh mục: {data?.type}
+        </Text>
+        <View>
+          <Text h4 h4Style={{ fontSize: 16 }}>
+            Đạo diễn: {data?.director}
+          </Text>
+          <Text h4 h4Style={{ fontSize: 16 }}>
+            Diễn viên: {data?.actor}
+          </Text>
+          <Text h4 h4Style={{ fontSize: 16 }}>
+            Nội Dung: {`${data?.content}`}
+          </Text>
         </View>
-      </View>
-      <View>
-        <Text h4 h4Style={{ fontSize: 16 }}>
-          Dao dien: Feng宝
-        </Text>
-        <Text h4 h4Style={{ fontSize: 16 }}>
-          Dien vien: Feng宝
-        </Text>
-        <Text h4 h4Style={{ fontSize: 16 }}>
-          Noi Dung: Feng宝
-        </Text>
+        <Button
+          size="md"
+          buttonStyle={{ width: "30%", marginTop: 15, backgroundColor: "red" }}
+          onPress={() => navigation.navigate("Watch", { data })}
+        >
+          Xem phim
+        </Button>
       </View>
     </View>
   );
