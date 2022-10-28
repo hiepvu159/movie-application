@@ -14,7 +14,14 @@ export default function Card({ data }) {
       }
     >
       <View>
-        <Image source={{ uri: data.poster_url }} style={styles.poster} />
+        <Image
+          source={{
+            uri:
+              data.poster_url ||
+              "https://ih1.redbubble.net/image.2947377023.5715/fposter,small,wall_texture,product,750x1000.jpg",
+          }}
+          style={styles.poster}
+        />
         <View>
           <Text style={styles.name}>{data.name}</Text>
         </View>

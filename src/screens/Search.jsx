@@ -3,6 +3,7 @@ import { View, StyleSheet, ScrollView, FlatList } from "react-native";
 import { SearchBar } from "@rneui/themed";
 import { getMovies, searchMovie } from "../services/movie";
 import Card from "../components/Card";
+import { Text } from "react-native";
 export default function Search({ navigation }) {
   const [movies, setMovies] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -16,7 +17,6 @@ export default function Search({ navigation }) {
   useEffect(() => {
     searchMovie(value, setSearchResults);
   }, [value]);
-
   return (
     <View>
       <SearchBar
@@ -30,8 +30,10 @@ export default function Search({ navigation }) {
         value={value}
       />
       <View style={{ paddingHorizontal: 5, marginBottom: 120 }}>
-        {value.length === 0 ? (
-          <></>
+        {value.length > 0 && searchResults.length === 0 ? (
+          <View style={{ width: "100%", marginHorizontal: 100, marginTop: 20 }}>
+            <Text>Không tìm thấy phim tương ứng</Text>
+          </View>
         ) : (
           <FlatList
             data={searchResults}
