@@ -12,7 +12,7 @@ export const getMovies = async (setMovies) => {
 
 export const getMovieById = async (id, setMovie) => {
   await axios
-    .get(`/movies/find/${id}`)
+    .get(`${url}/movies/find/${id}`)
     .then((res) => setMovie(res.data))
     .catch((err) => console.log(err));
 };

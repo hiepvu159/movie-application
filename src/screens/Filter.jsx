@@ -18,7 +18,14 @@ export default function Filter() {
   const [selected, setSelected] = useState("");
   const params = selected.replace(" ", "-");
   const renderItem = ({ item }) => (
-    <View style={{ flex: 1, paddingHorizontal: 20, marginBottom: 10 }}>
+    <View
+      style={{
+        flex: 1,
+        paddingHorizontal: 30,
+        marginTop: 10,
+        marginBottom: 10,
+      }}
+    >
       <Card data={item} />
     </View>
   );
@@ -30,16 +37,18 @@ export default function Filter() {
   }, [params]);
 
   return (
-    <View style={{ paddingHorizontal: 5 }}>
+    <View style={{ paddingHorizontal: 5, marginBottom: 20 }}>
       <SelectList
         style={styles.filter}
         setSelected={setSelected}
         data={options}
+        placeholder={"Chọn thể loại phim"}
         arrowicon={<Ionicons name={"chevron-down"} size={16} color={"black"} />}
       />
       <View
         style={{
           marginBottom: 95,
+          marginHorizontal: 20,
         }}
       >
         <FlatList

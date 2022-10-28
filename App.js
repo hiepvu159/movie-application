@@ -1,15 +1,15 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import { View } from "react-native";
-import MainContent from "./src/navigations/MainContent";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import InfoMovie from "./src/screens/InfoMovie";
+import NavigationAuth from "./src/navigations/NavigationAuth";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <MainContent />
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <NavigationContainer>
+        <NavigationAuth />
+      </NavigationContainer>
+    </Provider>
   );
 }

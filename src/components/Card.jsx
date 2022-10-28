@@ -1,15 +1,25 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import InfoMovie from "../screens/InfoMovie";
 
-export default function Card(props) {
-  const { data } = props;
+export default function Card({ data }) {
+  const navigation = useNavigation();
   return (
-    <View>
-      <Image source={{ uri: data.poster_url }} style={styles.poster} />
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("InfoMovie", {
+          data,
+        })
+      }
+    >
       <View>
-        <Text style={styles.name}>{data.name}</Text>
+        <Image source={{ uri: data.poster_url }} style={styles.poster} />
+        <View>
+          <Text style={styles.name}>{data.name}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
