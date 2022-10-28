@@ -61,12 +61,21 @@ export const filterMovie = async (params, setMovie) => {
     .catch((err) => console.log(err));
 };
 
-export const getInfo = async (src, setMovie, setLink) => {
+// export const getInfo = async (src, setMovie, setLink) => {
+//   await axios
+//     .get(`${src}`)
+//     .then((res) => {
+//       setMovie(res.data.movie);
+//       setLink(res.data);
+//     })
+//     .catch((err) => console.log(err));
+// };
+
+export const getMovieByCategory = async (setMovies, category) => {
   await axios
-    .get(`${src}`)
+    .get(`${url}/movies/filter/name=${category}`)
     .then((res) => {
-      setMovie(res.data.movie);
-      setLink(res.data);
+      setMovies(res.data);
     })
     .catch((err) => console.log(err));
 };

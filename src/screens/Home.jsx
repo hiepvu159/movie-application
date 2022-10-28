@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Swiper from "react-native-swiper/src";
 import {
+  getMovieByCategory,
   getMovies,
   getMoviesSeries,
   getMoviesSingle,
@@ -22,12 +23,23 @@ export default function Home() {
   const [movieSingle, setMovieSingle] = useState([]);
   const [movieSeries, setMovieSeries] = useState([]);
   const [newMovie, setNewMovie] = useState([]);
-
+  const [movieActions, setMovieActions] = useState([]);
+  const [movieScience, setMovieScience] = useState([]);
+  const [movieFiction, setmovieFiction] = useState([]);
+  const [moviePL, setMoviePL] = useState([]);
+  const action = "Hành-Động";
+  const science = "Tâm-Lý";
+  const plieu = "Phiêu-Lưu";
+  const fiction = "Viễn-Tưởng";
   useEffect(() => {
     // getMovies(setMovie);
     getMoviesSeries(setMovieSeries);
     getMoviesSingle(setMovieSingle);
     getNewMovie(setNewMovie);
+    getMovieByCategory(setMovieActions, action);
+    getMovieByCategory(setMovieScience, science);
+    getMovieByCategory(setmovieFiction, fiction);
+    getMovieByCategory(setMoviePL, plieu);
   }, []);
   return (
     <View>
@@ -71,12 +83,12 @@ export default function Home() {
             </View>
             <View style={{ paddingHorizontal: 5 }}>
               <View>
-                <Text style={styles.title}>Phim Lẻ</Text>
+                <Text style={styles.title}>Phim viễn tưởng</Text>
               </View>
               <View>
                 <ScrollView horizontal>
                   <View style={styles.slideMovie}>
-                    {movieSingle?.map((movie) => (
+                    {movieFiction.slice(0, 9).map((movie) => (
                       <View
                         style={{ marginBottom: 10, marginRight: 20 }}
                         key={movie._id}
@@ -90,12 +102,31 @@ export default function Home() {
             </View>
             <View style={{ paddingHorizontal: 5 }}>
               <View>
-                <Text style={styles.title}>Phim Bộ</Text>
+                <Text style={styles.title}>Phim hành động</Text>
               </View>
               <View>
                 <ScrollView horizontal>
                   <View style={styles.slideMovie}>
-                    {movieSeries?.map((movie) => (
+                    {movieActions.slice(0, 9)?.map((movie) => (
+                      <View
+                        style={{ marginBottom: 10, marginRight: 20 }}
+                        key={movie._id}
+                      >
+                        <Card data={movie} />
+                      </View>
+                    ))}
+                  </View>
+                </ScrollView>
+              </View>
+            </View>
+            <View style={{ paddingHorizontal: 5 }}>
+              <View>
+                <Text style={styles.title}>Phim phiêu lưu</Text>
+              </View>
+              <View>
+                <ScrollView horizontal>
+                  <View style={styles.slideMovie}>
+                    {moviePL.slice(0, 9)?.map((movie) => (
                       <View
                         style={{ marginBottom: 10, marginRight: 20 }}
                         key={movie._id}
